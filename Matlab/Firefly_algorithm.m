@@ -1,4 +1,4 @@
-function Firefly_algorithm()
+function res=Firefly_algorithm()
     function res=Intensity(x)
         res=-sum(x.^2+25*(sin(x).^2));
     end
@@ -37,9 +37,12 @@ function Firefly_algorithm()
         alpha=alpha*theta;
         ii=ii+1;
     end
+  %  Visulization of result 
 x_=pos(1,:);
 y_=pos(2,:);
 z_=Intensity(pos);
+[val,index]=max(z_);
+res=[x_(index),y_(index)];
 scatter(x_,y_,'filled','DisplayName','Final');
 hold on 
 x=-4:.1:4;
@@ -51,6 +54,8 @@ for ii=1:length
     z(ii,:)=Intensity([x(ii)*ones(1,length);y]);
 end
 % surf(x,y,z)
-contour(x,y,z)
+contour(x,y,-z)
+legend({'initial','final'},"Location","southeast")
+colorbar('eastoutside')
 end
 
