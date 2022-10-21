@@ -9,7 +9,7 @@ function Firefly_algorithm_m_N(lamda,mu,c1,c2,delta,N)
         end
         t1=0;
         prod0=1;
-        for j=1:m+N
+        for j=1:N+m
             prod0=prod0*(m+j*delta/mu);
             t1=t1+((rho^j)/(prod0));
         end
@@ -20,7 +20,7 @@ function Firefly_algorithm_m_N(lamda,mu,c1,c2,delta,N)
         pi_0=1/(pi_0+(rho^m)*t1/fact);
         t2=0;
         prod1=1;
-        for j=1:m+N
+        for j=1:N+m
             prod1=prod1*(m+j*delta/mu);
             t2=t2+(j*(rho^j)/(prod1));
         end
